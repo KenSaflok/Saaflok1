@@ -1,0 +1,125 @@
+\\\
+
+
+
+
+Job details (Desktop Administrator – Remote Support)
+Services/skills section
+Pricing (monthly, yearly, multi-year with discounts)
+Contact/signup form
+JavaScript to calculate estimated cost based on devices and plan
+
+If you want next improvements, I can add:
+
+Payment integration (Stripe/PayPal)
+Admin dashboard to track customers
+Email notifications when someone signs up
+Company branding/logo and animations
+Deployment guide (how to host it live)
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Support Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">IT Support Services</h1>
+    <p>Professional Desktop Administration & IT Solutions</p>
+  </header>
+
+  <!-- Job Info -->
+  <section class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Position Details</h2>
+    <div class="bg-white p-4 rounded-2xl shadow">
+      <p><strong>Position:</strong> Desktop Administrator</p>
+      <p><strong>Location:</strong> Olathe, KS (Onsite)</p>
+      <p><strong>Job Type:</strong> Fulltime</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Our Expertise</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded-2xl shadow">Windows 10 / Windows 11 Administration</div>
+      <div class="bg-white p-4 rounded-2xl shadow">Microsoft Office / Microsoft 365</div>
+      <div class="bg-white p-4 rounded-2xl shadow">Active Directory / Azure AD</div>
+      <div class="bg-white p-4 rounded-2xl shadow">SCCM / Intune Endpoint Management</div>
+      <div class="bg-white p-4 rounded-2xl shadow">Basic Networking (TCP/IP, DNS, DHCP)</div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Pricing Plans</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      <div class="bg-white p-4 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-bold">Monthly Plan</h3>
+        <p class="text-2xl">$25/device</p>
+        <p>Per month subscription</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-bold">Yearly Plan</h3>
+        <p class="text-2xl">$250/device</p>
+        <p>Save 15%</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-bold">Multi-Year Plan</h3>
+        <p class="text-2xl">$450/device</p>
+        <p>2 Years - Save 25%</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+    <form id="contactForm" class="bg-white p-6 rounded-2xl shadow max-w-lg mx-auto">
+      <input type="text" id="name" placeholder="Name" class="w-full mb-3 p-2 border rounded" required>
+      <input type="email" id="email" placeholder="Email" class="w-full mb-3 p-2 border rounded" required>
+      <input type="number" id="devices" placeholder="Number of Devices" class="w-full mb-3 p-2 border rounded" required>
+
+      <select id="plan" class="w-full mb-3 p-2 border rounded">
+        <option value="monthly">Monthly</option>
+        <option value="yearly">Yearly</option>
+        <option value="multi">2 Years</option>
+      </select>
+
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+    </form>
+
+    <p id="result" class="text-center mt-4 font-bold"></p>
+  </section>
+
+  <!-- Script -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const devices = parseInt(document.getElementById("devices").value);
+      const plan = document.getElementById("plan").value;
+
+      let pricePerDevice = 0;
+
+      if (plan === "monthly") pricePerDevice = 25;
+      if (plan === "yearly") pricePerDevice = 250;
+      if (plan === "multi") pricePerDevice = 450;
+
+      const total = pricePerDevice * devices;
+
+      document.getElementById("result").innerText =
+        `Thank you ${name}! Your estimated cost is $${total}. We will contact you soon.`;
+    });
+  </script>
+
+</body>
+</html>
